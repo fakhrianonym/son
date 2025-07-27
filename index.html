@@ -6,19 +6,12 @@
   <title>Fakhri Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    @keyframes backgroundAnimation {
-      0% { background-color: #0d0d0d; }
-      50% { background-color: #1a1a1a; }
-      100% { background-color: #0d0d0d; }
-    }
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
-      color: #eee;
+      background-color: #0d0d0d; /* Warna latar belakang gelap */
+      color: #eee; /* Warna teks */
       transition: background 0.4s, color 0.4s;
-      animation: backgroundAnimation 10s infinite alternate;
     }
 
     header {
@@ -70,7 +63,7 @@
     }
 
     .card-link {
-      background: #1c1c1c;
+      background: #1c1c1c; /* Warna latar belakang kartu */
       border: 1px solid #444;
       padding: 20px;
       border-radius: 12px;
@@ -104,7 +97,7 @@
     }
 
     .fitur-box {
-      background: #222;
+      background: #222; /* Warna latar belakang fitur */
       border: 1px solid #333;
       border-radius: 12px;
       padding: 20px;
@@ -130,35 +123,36 @@
 
     footer {
       font-size: 0.9em;
-      background: #000;
+      background: #000; /* Warna latar belakang footer */
       padding: 20px;
       text-align: center;
     }
 
+    /* Gaya untuk mode terang */
     .light-mode {
-      background-color: #f3f3f3;
-      color: #222;
+      background-color: #f3f3f3; /* Warna latar belakang terang */
+      color: #222; /* Warna teks */
     }
 
-    .light-mode nav a {
-      color: #0066cc;
+    .light-mode header {
+      background: linear-gradient(90deg, #e0e0e0, #ccc); /* Warna latar belakang header */
     }
 
     .light-mode .card-link {
-      background: #fff;
-      color: #222;
-      border-color: #ccc;
+      background: #fff; /* Warna latar belakang kartu di mode terang */
+      color: #222; /* Warna teks kartu di mode terang */
+      border-color: #ccc; /* Warna border kartu di mode terang */
     }
 
     .light-mode .fitur-box {
-      background: #e0e0e0;
-      color: #111;
-      border-color: #bbb;
+      background: #e0e0e0; /* Warna latar belakang fitur di mode terang */
+      color: #111; /* Warna teks fitur di mode terang */
+      border-color: #bbb; /* Warna border fitur di mode terang */
     }
 
     .light-mode footer {
-      background: #ddd;
-      color: #000;
+      background: #ddd; /* Warna latar belakang footer di mode terang */
+      color: #000; /* Warna teks footer di mode terang */
     }
 
     #modeToggle {
@@ -222,7 +216,7 @@
     }
 
     .faq-item {
-      background: #222;
+      background: #222; /* Warna latar belakang item FAQ */
       border: 1px solid #333;
       border-radius: 12px;
       padding: 15px;
@@ -261,8 +255,8 @@
 <body>
 
   <header>
-    <img src=fs.png></a>
-        <button id="modeToggle">🌓 Mode</button>
+    <img src="fs.png" alt="Logo">
+    <button id="modeToggle">🌓 Mode</button>
   </header>
 
   <nav>
