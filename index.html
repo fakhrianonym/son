@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fakhri Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes backgroundAnimation {
+      0% { background-color: #0d0d0d; }
+      50% { background-color: #1a1a1a; }
+      100% { background-color: #0d0d0d; }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #eee;
+      transition: background 0.4s, color 0.4s;
+      animation: backgroundAnimation 10s infinite alternate;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+      background: linear-gradient(90deg, #1a1a1a, #333);
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav {
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.4em;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+      transform: scale(1.1);
+    }
+
+    .page {
+      padding: 30px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-link {
+      background: #1c1c1c;
+      border: 1px solid #444;
+      padding: 20px;
+      border-radius: 12px;
+      color: silver;
+      text-align: center;
+      text-decoration: none;
+      width: 220px;
+      transition: all 0.3s;
+    }
+
+    .card-link:hover {
+      background: #292929;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .fitur-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .fitur-box {
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      color: #ccc;
+      transition: transform 0.3s;
+    }
+
+    .fitur-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+
+    .fitur-box h4 {
+      margin: 10px 0 5px;
+    }
+
+    .fitur-box span {
+      font-size: 2em;
+      display: block;
+    }
+
+    footer {
+      font-size: 0.9em;
+      background: #000;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .light-mode {
+      background-color: #f3f3f3;
+      color: #222;
+    }
+
+    .light-mode nav a {
+      color: #0066cc;
+    }
+
+    .light-mode .card-link {
+      background: #fff;
+      color: #222;
+      border-color: #ccc;
+    }
+
+    .light-mode .fitur-box {
+      background: #e0e0e0;
+      color: #111;
+      border-color: #bbb;
+    }
+
+    .light-mode footer {
+      background: #ddd;
+      color: #000;
+    }
+
+    #modeToggle {
+      background: transparent;
+      border: 2px solid #888;
+      border-radius: 8px;
+      padding: 6px 12px;
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    #modeToggle:hover {
+      background: #444;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      display: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .slider {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .faq {
+      margin-top: 50px;
+    }
+
+    .faq h3 {
+      text-align: center;
+    }
+
+    .faq-item {
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 10px 0;
+      color: #ccc;
+    }
+
+    .faq-item h4 {
+      cursor: pointer;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        font-size: 1em;
+      }
+
+      .card-link, .fitur-box {
+        width: 90%;
+      }
+
+      header img {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src=fs.png></a>
+        <button id="modeToggle">🌓 Mode</button>
+  </header>
+
+  <nav>
+    <a onclick="showPage('beranda')" title="Beranda">🏠</a>
+    <a onclick="showPage('kontak')" title="Kontak">📞</a>
+  </nav>
+
+  <section id="beranda" class="page active">
+    <h2 style="font-size: 2.8em;"> Selamat Datang Di Fakhri Store </h2>
+    
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="https://via.placeholder.com/800x300?text=Promo+1" alt="Promo 1"></div>
+        <div class="slide"><img src="https://via.placeholder.com/800x300?text=Promo+2" alt="Promo 2"></div>
+      </div>
+    </div>
+
+    <p>Pilih layanan kami:</p>
+    <div class="service-cards">
+      <a href="https://wa.me/6289602445461" target="_blank" class="card-link">
+        <h3>Top Up Game</h3>
+        <p>Proses top up untuk berbagai game dengan mudah dan cepat.</p>
+      </a>
+      <a href="https://wa.me/6289602445461" target="_blank" class="card-link">
+        <h3>Sewa Akun Premium</h3>
+        <p>Main akun sultan tanpa harus beli</p>
+      </a>
+      <a href="https://wa.me/6289602445461" target="_blank" class="card-link">
+        <h3>Jual Beli Aman</h3>
+        <p>Transaksi dijamin aman dan cepat</p>
+      </a>
+    </div>
+
+    <div class="fitur-container">
+      <div class="fitur-box">
+        <span>⚡</span>
+        <h4>Top Up 24 Jam</h4>
+        <p>Layanan aktif nonstop</p>
+      </div>
+      <div class="fitur-box">
+        <span>🛡️</span>
+        <h4>Garansi Akun</h4>
+        <p>Pengembalian bila akun bermasalah</p>
+      </div>
+      <div class="fitur-box">
+        <span>🎮</span>
+        <h4>Akun Banyak Game</h4>
+        <p>Dari Mobile Legends hingga Valorant</p>
+      </div>
+      <div class="fitur-box">
+        <span>💬</span>
+        <h4>Respon Cepat</h4>
+        <p>Admin fast respon via WA</p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <h3>Pertanyaan yang Sering Diajukan (FAQ)</h3>
+      <div class="faq-item">
+        <h4 onclick="toggleFAQ(this)">Apa itu Top Up Game? <span>▼</span></h4>
+        <div class="faq-answer">
+          <p>Top Up Game adalah layanan untuk memudahkan proses top up saldo dalam berbagai game.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h4 onclick="toggleFAQ(this)">Bagaimana cara menyewa akun premium? <span>▼</span></h4>
+        <div class="faq-answer">
+          <p>Anda dapat menyewa akun premium dengan menghubungi kami melalui WhatsApp.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h4 onclick="toggleFAQ(this)">Apakah transaksi aman? <span>▼</span></h4>
+        <div class="faq-answer">
+          <p>Ya, semua transaksi kami dijamin aman dan terpercaya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="page">
+    <h2 style="font-size: 2.8em;">📞</h2>
+    <p><strong>Email:</strong> support@gamestore.id</p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
+    <p><strong>Instagram:</strong> <a href="https://instagram.com/gamestore.id" target="_blank">@gamestore.id</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 GameStore ID - All rights reserved.</p>
+    <div>
+      <a href="https://facebook.com" target="_blank">Facebook</a> |
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <button id="backToTop">↑ Kembali ke Atas</button>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(section => {
+        if (section.id === id) {
+          section.style.display = 'block';
+          setTimeout(() => section.classList.add('active'), 10);
+        } else {
+          section.classList.remove('active');
+          setTimeout(() => section.style.display = 'none', 500);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showPage('beranda');
+
+      const toggleBtn = document.getElementById("modeToggle");
+      const body = document.body;
+
+      if (localStorage.getItem("mode") === "light") {
+        body.classList.add("light-mode");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("light-mode");
+        localStorage.setItem("mode", body.classList.contains("light-mode") ? "light" : "dark");
+      });
+
+      const backToTopBtn = document.getElementById("backToTop");
+      window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      };
+
+      backToTopBtn.onclick = function() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      };
+
+      let currentSlide = 0;
+      const slides = document.getElementById('slides');
+      const totalSlides = slides.children.length;
+
+      function showSlide(index) {
+        const offset = -index * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+      }
+
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }, 3000);
+    });
+
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const arrow = element.querySelector('span');
+      answer.style.display = answer.style.display === "block" ? "none" : "block";
+      arrow.textContent = answer.style.display === "block" ? "▲" : "▼";
+    }
+  </script>
+
+</body>
+</html>
